@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SchoolManagementAppWeb.Models.StudentDetailsForDropdownEF>
+
+@{
+    ViewData["Title"] = "ABC International School";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <td></td>
+        <td></td>
+        <td>
+            <label for="StudentName">Select Student Name</label>
+        </td>
+        <td>
+            @Html.DropDownList("studentList", @ViewBag.studentList, "-- Select Student Name --", new { @class = "form-control" })
+
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr></tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <button type="submit" class="btn btn-primary btn-block">Search</button>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+
+    </tr>
+</table>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.student_name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.student_name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.student_registration_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.student_registration_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.student_registration_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
