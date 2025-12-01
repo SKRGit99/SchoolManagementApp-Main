@@ -7,6 +7,6 @@ namespace SchoolManagementAppWeb.Abstract
         IEnumerable<StudentInfoEF> fetchStudentDetailsIEnumerableImplementEF();
 
         List<StudentInfoEF> fetchStudentDetailsListImplementEF();
-        List<StudentDetailsForDropdownEF> fetchStudentDetailsForDropdownEF();
+        List<StudentInfoForDropdownEF> fetchStudentDetailsForDropdownEF();
     }
 }

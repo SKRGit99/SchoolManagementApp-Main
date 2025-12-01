@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using NuGet.Protocol.Core.Types;
 using SchoolManagementAppWeb.Abstract;
 using SchoolManagementAppWeb.Data;
@@ -15,9 +17,26 @@ builder.Services.AddControllersWithViews();
 //For the Dependency Injection framework to resolve IStudentInfo, it must first be registered with the container. 
 builder.Services.AddScoped<IStudentInfoUsingEF, StudentInfoRepoEF>();
 
+
 /*Injected the following*/
 builder.Services.AddDbContext<StudentInfoDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolManagementAppDbConnectionString")));
+builder.Services.AddDbContext<AuthDatabaseContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolManagementAppAuthDbConnectionString")).ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning)).EnableDetailedErrors());
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<AuthDatabaseContext>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Default settings
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
+});
 
 var app = builder.Build();
 
@@ -34,14 +53,15 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     //pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingIEnumerable}/{id?}");
-    pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingList}/{id?}");
+    //pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingList}/{id?}");
     //pattern: "{controller=StudentDetailsEF}/{action=displayStudentDetailsForDropDown}/{id?}");
+    pattern: "{controller=Account}/{action=Register}/{id?}");
 
-    //pattern: "{controller=StudentDetailsADO}/{action=fetchStudentDetailsUsingADO}/{id?}");
 
 app.Run();

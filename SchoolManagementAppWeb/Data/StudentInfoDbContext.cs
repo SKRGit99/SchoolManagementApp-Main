@@ -16,6 +16,6 @@ namespace SchoolManagementAppWeb.Data
         public DbSet<StudentInfoEF> StudentInfoUsingIEnumerable { get; set; }
 
         public DbSet<StudentInfoEF> StudentInfoUsingList { get; set; }
-        public DbSet<StudentDetailsForDropdownEF> StudentDetailsForDropdown { get; set; }
+        public DbSet<StudentInfoForDropdownEF> StudentDetailsForDropdown { get; set; }
     }
 }

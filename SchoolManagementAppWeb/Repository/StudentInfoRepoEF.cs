@@ -37,9 +37,9 @@ namespace SchoolManagementAppWeb.Repository
 
         }
 
-        public List<StudentDetailsForDropdownEF> fetchStudentDetailsForDropdownEF() //Display all the Records.
+        public List<StudentInfoForDropdownEF> fetchStudentDetailsForDropdownEF() //Display all the Records.
         {
-            List<StudentDetailsForDropdownEF> stdDetForDrpDwn = new List<StudentDetailsForDropdownEF>();
+            List<StudentInfoForDropdownEF> stdDetForDrpDwn = new List<StudentInfoForDropdownEF>();
 
             try
             {

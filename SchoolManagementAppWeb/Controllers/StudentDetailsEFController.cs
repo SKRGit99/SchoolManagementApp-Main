@@ -37,7 +37,7 @@ namespace SchoolManagementAppWeb.Controllers
 
         public IActionResult displayStudentDetailsForDropDown()
         {
-            List<StudentDetailsForDropdownEF> lstStudentForDrpDwn = new List<StudentDetailsForDropdownEF>();
+            List<StudentInfoForDropdownEF> lstStudentForDrpDwn = new List<StudentInfoForDropdownEF>();
 
             /*This code is for getting dropdown details*/
             lstStudentForDrpDwn = studentInfoRepository.fetchStudentDetailsForDropdownEF();

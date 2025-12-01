@@ -15,7 +15,7 @@ namespace SchoolManagementAppWeb.Models
             public string? student_Guardian_Name { get; set; }
     }
 
-    public class StudentDetailsForDropdownEF
+    public class StudentInfoForDropdownEF
     {
         [Key]
         public int student_registration_Id { get; set; }
