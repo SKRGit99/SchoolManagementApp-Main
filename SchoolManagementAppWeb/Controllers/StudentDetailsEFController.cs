@@ -28,7 +28,7 @@ namespace SchoolManagementAppWeb.Controllers
             return View(studentDetails);
         }
 
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public IActionResult fetchStudentDetailsUsingList()
         {
@@ -39,6 +39,7 @@ namespace SchoolManagementAppWeb.Controllers
             return View(lstStudentInfoList);
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult displayStudentDetailsForDropDown()
         {
             List<StudentInfoForDropdownEF> lstStudentForDrpDwn = new List<StudentInfoForDropdownEF>();

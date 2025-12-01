@@ -28,64 +28,134 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-  
-                   
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
 
-                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                    {
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item"
-                                    asp-area=""
-                                    asp-controller="StudentDetailsEF"
-                                    asp-action="fetchStudentDetailsUsingList">
-                                        Student Data
-                                    </a>
-                                </li>
-
+                                 @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                                    {
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Admin
+                                            </a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                       asp-area=""
+                                                       asp-controller="EducatorDetailsEF"
+                                                       asp-action="fetchEducatorDetailsUsingList">
+                                                        Educator Details
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                    asp-area=""
+                                                    asp-controller="StudentDetailsEF"
+                                                    asp-action="fetchStudentDetailsUsingList">
+                                                        Student Details
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                        asp-area=""
+                                                        asp-controller="StudentDetailsEF"
+                                                        asp-action="displayStudentDetailsForDropDown">
+                                                        Staff Details
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item"
+                                                       asp-area=""
+                                                       asp-controller="StudentDetailsEF"
+                                                       asp-action="displayStudentDetailsForDropDown">
+                                                        Vendor Details
+                                                    </a>
+                                                </li>
                               
-                            </ul>
-                        </li>
-                    }
-                    
-                </ul>
+                                            </ul>
+                                        </li>
+                                    }
 
+                                @if (signInManager.IsSignedIn(User) && User.IsInRole("Educator"))
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Educator corner
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="StudentDetailsEF"
+                                                   asp-action="fetchStudentDetailsUsingList">
+                                                   Student Details
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item"
+                                                   asp-area=""
+                                                   asp-controller="StudentDetailsEF"
+                                                   asp-action="displayStudentDetailsForDropDown">
+                                                   My Details
+                                                </a>
+                                            </li>
 
-                    <div class="d-flex align-items-center">
+                                        </ul>
+                                    </li>
+                                }
 
-                        @if (signInManager.IsSignedIn(User))
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Student"))
                         {
-                            <div class="me-3 text-light">
-                                @User?.Identity?.Name
-                            </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Student Corner
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-area=""
+                                           asp-controller="StudentDetailsEF"
+                                           asp-action="fetchStudentDetailsUsingList">
+                                            My Details
+                                        </a>
+                                    </li>
+                                   
 
-                            <a class="btn me-3 bg-light text-dark"
-                               asp-area=""
-                               asp-controller="Account"
-                               asp-action="Logout">Logout</a>
+                                </ul>
+                            </li>
                         }
-                        else
-                        { 
-                            <a class="btn me-3 bg-light text-dark"
-                               asp-area=""
-                               asp-controller="Account"
-                               asp-action="Login">Login</a>
+                    
+                    </ul>
 
-                            <a class="btn me-3 bg-light text-dark"
-                               asp-area=""
-                               asp-controller="Account"
-                               asp-action="Register">Register</a>
 
-                         } 
+                            <div class="d-flex align-items-center">
+
+                                @if (signInManager.IsSignedIn(User))
+                                {
+                                    <div class="me-3 text-light">
+                                        @User?.Identity?.Name
+                                    </div>
+
+                                    <a class="btn me-3 bg-light text-dark"
+                                       asp-area=""
+                                       asp-controller="Account"
+                                       asp-action="Logout">Logout</a>
+                                }
+                                else
+                                { 
+                                    <a class="btn me-3 bg-light text-dark"
+                                       asp-area=""
+                                       asp-controller="Account"
+                                       asp-action="Login">Login</a>
+
+                                    <a class="btn me-3 bg-light text-dark"
+                                       asp-area=""
+                                       asp-controller="Account"
+                                       asp-action="Register">Register</a>
+
+                                 } 
                         
-                    </div>
+                            </div>
                 </div>
             </div>
         </nav>

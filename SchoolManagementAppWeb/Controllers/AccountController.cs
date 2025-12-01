@@ -53,9 +53,13 @@ namespace SchoolManagementAppWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string ReturnUrl)
         {
-            return View();
+            var model = new Login
+            {
+                ReturnUrl = ReturnUrl
+            };
+            return View(model);
         }
 
         [HttpPost]
@@ -88,6 +92,12 @@ namespace SchoolManagementAppWeb.Controllers
         {
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
