@@ -5,6 +5,8 @@ using SchoolManagementAppWeb.Models;
 using SchoolManagementAppWeb.Data;
 using SchoolManagementAppWeb.Repository;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagementAppWeb.Controllers
 {
@@ -26,6 +28,8 @@ namespace SchoolManagementAppWeb.Controllers
             return View(studentDetails);
         }
 
+        [Authorize]
+        [HttpGet]
         public IActionResult fetchStudentDetailsUsingList()
         {
             List<StudentInfoEF> lstStudentInfoList = new List<StudentInfoEF>();

@@ -71,10 +71,10 @@ namespace SchoolManagementAppWeb.Controllers
 
             if (signInResult != null && signInResult.Succeeded)
             {
-                //if (!string.IsNullOrWhiteSpace(loginViewModel.ReturnUrl))
-                //{
-                //    return Redirect(loginViewModel.ReturnUrl);
-                //}
+                if (!string.IsNullOrWhiteSpace(Login.ReturnUrl))
+                {
+                    return Redirect(Login.ReturnUrl);
+                }
 
                 return RedirectToAction("Index", "Home");
             }

@@ -59,9 +59,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     //pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingIEnumerable}/{id?}");
-    //pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingList}/{id?}");
+    pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingList}/{id?}");
     //pattern: "{controller=StudentDetailsEF}/{action=displayStudentDetailsForDropDown}/{id?}");
-    pattern: "{controller=Account}/{action=Register}/{id?}");
+    //pattern: "{controller=Account}/{action=Register}/{id?}");
 
 
 app.Run();
