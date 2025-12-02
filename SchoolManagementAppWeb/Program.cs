@@ -15,11 +15,11 @@ builder.Services.AddControllersWithViews();
 // Retrieved 2025-11-29, License - CC BY-SA 4.0
 
 //For the Dependency Injection framework to resolve IStudentInfo, it must first be registered with the container. 
-builder.Services.AddScoped<IStudentInfoUsingEF, StudentInfoRepoEF>();
-
+builder.Services.AddScoped<IStudentDetailsUsingEF, StudentDetailsRepoEF>();
+builder.Services.AddScoped<IEducatorDetailsEF, EducatorDetailsRepoEF>();
 
 /*Injected the following*/
-builder.Services.AddDbContext<StudentInfoDbContext>(options =>
+builder.Services.AddDbContext<SchoolApplicationDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolManagementAppDbConnectionString")));
 builder.Services.AddDbContext<AuthDatabaseContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolManagementAppAuthDbConnectionString")).ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning)).EnableDetailedErrors());
@@ -59,7 +59,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     //pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingIEnumerable}/{id?}");
-    pattern: "{controller=StudentDetailsEF}/{action=fetchStudentDetailsUsingList}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
     //pattern: "{controller=StudentDetailsEF}/{action=displayStudentDetailsForDropDown}/{id?}");
     //pattern: "{controller=Account}/{action=Register}/{id?}");
 

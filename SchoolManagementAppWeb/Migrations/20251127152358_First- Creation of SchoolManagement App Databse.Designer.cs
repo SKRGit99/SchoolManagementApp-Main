@@ -10,7 +10,7 @@ using SchoolManagementAppWeb.Data;
 
 namespace SchoolManagementAppWeb.Migrations
 {
-    [DbContext(typeof(StudentInfoDbContext))]
+    [DbContext(typeof(SchoolApplicationDbContext))]
     [Migration("20251127152358_First- Creation of SchoolManagement App Databse")]
     partial class FirstCreationofSchoolManagementAppDatabse
     {

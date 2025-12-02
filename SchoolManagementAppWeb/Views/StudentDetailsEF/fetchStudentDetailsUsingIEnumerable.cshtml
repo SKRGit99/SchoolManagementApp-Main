@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SchoolManagementAppWeb.Models.StudentInfoEF>;
+﻿@* @model IEnumerable<SchoolManagementAppWeb.Models.StudentDetailsEF>;
 
 @{
     ViewData["Title"] = "ABC International School";
@@ -23,8 +23,8 @@
                 <td>@StudentInfo.student_name</td>
                 <td>@StudentInfo.student_roll_number</td>
                 <td>@StudentInfo.student_mobile_number</td>
-                <td>@StudentInfo.student_class</td>
-                <td>@StudentInfo.student_section_name</td>
+                <td>@StudentInfo.student_class_details</td>
+                <td>@StudentInfo.student_section_details</td>
                 <td>@StudentInfo.student_address</td>
 
 
@@ -37,3 +37,4 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+ *@

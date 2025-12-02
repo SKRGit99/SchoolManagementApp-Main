@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SchoolManagementAppWeb.Models.StudentInfoForDropdownEF>
+﻿@model IEnumerable<SchoolManagementAppWeb.Models.StudentDetailsForDropdownEF>
 
 @{
     ViewData["Title"] = "ABC International School";
@@ -10,7 +10,7 @@
         <td></td>
         <td></td>
         <td>
-            <label for="StudentName">Select Student Name</label>
+            <label for="StudentName">Student Name</label>
         </td>
         <td>
             @Html.DropDownList("studentList", @ViewBag.studentList, "-- Select Student Name --", new { @class = "form-control" })

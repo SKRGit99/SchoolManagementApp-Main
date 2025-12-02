@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagementAppWeb.Data;
 
@@ -10,9 +11,11 @@ using SchoolManagementAppWeb.Data;
 namespace SchoolManagementAppWeb.Migrations
 {
     [DbContext(typeof(SchoolApplicationDbContext))]
-    partial class SchoolInfoDbContextContextModelSnapshot : ModelSnapshot
+    [Migration("20251201120112_First - Creation of SchoolManagementAppDb")]
+    partial class FirstCreationofSchoolManagementAppDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

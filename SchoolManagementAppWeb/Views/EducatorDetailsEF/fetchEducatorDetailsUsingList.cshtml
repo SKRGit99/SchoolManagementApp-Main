@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SchoolManagementAppWeb.Models.EducatorDetailsEF>
+
+@{
+    ViewData["Title"] = "fetchEducatorDetailsUsingList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.educator_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.educator_subject_assigned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.educator_class_assigned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.educator_section_assigned)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.educator_mobile_number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.educator_address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.educator_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.educator_subject_assigned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.educator_class_assigned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.educator_section_assigned)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.educator_mobile_number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.educator_address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.educator_registration_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.educator_registration_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.educator_registration_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

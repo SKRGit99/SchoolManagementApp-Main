@@ -10,7 +10,7 @@ using SchoolManagementAppWeb.Data;
 namespace SchoolManagementAppWeb.Migrations
 {
     [DbContext(typeof(SchoolApplicationDbContext))]
-    partial class SchoolInfoDbContextContextModelSnapshot : ModelSnapshot
+    partial class SchoolApplicationDbContextContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -54,7 +54,7 @@ namespace SchoolManagementAppWeb.Migrations
 
                     b.HasKey("educator_registration_Id");
 
-                    b.ToTable("EducatorDetailsUsingList");
+                    b.ToTable("EducatorDetailsEF");
                 });
 
             modelBuilder.Entity("SchoolManagementAppWeb.Models.EducatorDetailsForDropdownEF", b =>
@@ -71,7 +71,7 @@ namespace SchoolManagementAppWeb.Migrations
 
                     b.HasKey("educator_registration_Id");
 
-                    b.ToTable("EducatorDetailsForDropdown");
+                    b.ToTable("EducatorDetailsForDropdownEF");
                 });
 
             modelBuilder.Entity("SchoolManagementAppWeb.Models.StudentDetailsEF", b =>
@@ -127,7 +127,7 @@ namespace SchoolManagementAppWeb.Migrations
 
                     b.HasKey("student_registration_Id");
 
-                    b.ToTable("StudentDetailsForDropdown");
+                    b.ToTable("StudentDetailsForDropdownEF");
                 });
 #pragma warning restore 612, 618
         }

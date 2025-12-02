@@ -12,37 +12,37 @@ namespace SchoolManagementAppWeb.Controllers
 {
     public class StudentDetailsEFController : Controller
     {
-        private readonly IStudentInfoUsingEF studentInfoRepository;
+        private readonly IStudentDetailsUsingEF studentInfoRepository;
 
-        public StudentDetailsEFController(IStudentInfoUsingEF studentInfoRepository)
+        public StudentDetailsEFController(IStudentDetailsUsingEF studentInfoRepository)
         {
             this.studentInfoRepository = studentInfoRepository;
 
         }
 
-        public IActionResult fetchStudentDetailsUsingIEnumerable()
-        {
+        //public IActionResult fetchStudentDetailsUsingIEnumerable()
+        //{
 
-            var studentDetails = studentInfoRepository.fetchStudentDetailsIEnumerableImplementEF();
+        //    var studentDetails = studentInfoRepository.fetchStudentDetailsUsingIEnumerable();
 
-            return View(studentDetails);
-        }
+        //    return View(studentDetails);
+        //}
 
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin,Educator")]
         [HttpGet]
         public IActionResult fetchStudentDetailsUsingList()
         {
-            List<StudentInfoEF> lstStudentInfoList = new List<StudentInfoEF>();
+            List<StudentDetailsEF> lstStudentInfoList = new List<StudentDetailsEF>();
 
-            lstStudentInfoList = studentInfoRepository.fetchStudentDetailsListImplementEF();
+            lstStudentInfoList = studentInfoRepository.fetchStudentDetailsUsingListEF();
 
             return View(lstStudentInfoList);
         }
 
-        [Authorize(Roles = "Admin")]
-        public IActionResult displayStudentDetailsForDropDown()
+        [Authorize(Roles = "Admin,Educator")]
+        public IActionResult fetchStudentDetailsForDropDown()
         {
-            List<StudentInfoForDropdownEF> lstStudentForDrpDwn = new List<StudentInfoForDropdownEF>();
+            List<StudentDetailsForDropdownEF> lstStudentForDrpDwn = new List<StudentDetailsForDropdownEF>();
 
             /*This code is for getting dropdown details*/
             lstStudentForDrpDwn = studentInfoRepository.fetchStudentDetailsForDropdownEF();

@@ -10,7 +10,7 @@ using SchoolManagementAppWeb.Data;
 
 namespace SchoolManagementAppWeb.Migrations
 {
-    [DbContext(typeof(StudentInfoDbContext))]
+    [DbContext(typeof(SchoolApplicationDbContext))]
     [Migration("20251129174722_Added New Coulmn")]
     partial class AddedNewCoulmn
     {

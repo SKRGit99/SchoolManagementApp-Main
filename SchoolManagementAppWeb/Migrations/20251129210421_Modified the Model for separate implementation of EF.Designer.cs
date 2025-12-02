@@ -10,7 +10,7 @@ using SchoolManagementAppWeb.Data;
 
 namespace SchoolManagementAppWeb.Migrations
 {
-    [DbContext(typeof(StudentInfoDbContext))]
+    [DbContext(typeof(SchoolApplicationDbContext))]
     [Migration("20251129210421_Modified the Model for separate implementation of EF")]
     partial class ModifiedtheModelforseparateimplementationofEF
     {

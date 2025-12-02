@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SchoolManagementAppWeb.Models.StudentInfoEF>
+﻿@model IEnumerable<SchoolManagementAppWeb.Models.StudentDetailsEF>
 
 @{
     ViewData["Title"] = "ABC International School";
@@ -22,16 +22,16 @@
                     @Html.DisplayNameFor(model => model.student_mobile_number)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.student_class)
+                    @Html.DisplayNameFor(model => model.student_class_details)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.student_section_name)
+                    @Html.DisplayNameFor(model => model.student_section_details)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.student_address)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.student_Guardian_Name)
+                    @Html.DisplayNameFor(model => model.student_guardian_Name)
                 </th>
                 <th></th>
             </tr>
@@ -50,16 +50,16 @@
                         @Html.DisplayFor(modelItem => item.student_mobile_number)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.student_class)
+                        @Html.DisplayFor(modelItem => item.student_class_details)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.student_section_name)
+                        @Html.DisplayFor(modelItem => item.student_section_details)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.student_address)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.student_Guardian_Name)
+                        @Html.DisplayFor(modelItem => item.student_guardian_Name)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.student_registration_Id">Edit</a> |
@@ -72,9 +72,4 @@
          </tbody>
     </table>
 </div>
-@* <table class="table">
-    <thead>
-    </thead>
-    <tbody>
-    </tbody>
-</table> *@
+

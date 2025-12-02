@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolManagementAppWeb.Data;
 
@@ -10,9 +11,11 @@ using SchoolManagementAppWeb.Data;
 namespace SchoolManagementAppWeb.Migrations
 {
     [DbContext(typeof(SchoolApplicationDbContext))]
-    partial class SchoolInfoDbContextContextModelSnapshot : ModelSnapshot
+    [Migration("20251202084559_Model Class and DBContext Class changes")]
+    partial class ModelClassandDBContextClasschanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +57,7 @@ namespace SchoolManagementAppWeb.Migrations
 
                     b.HasKey("educator_registration_Id");
 
-                    b.ToTable("EducatorDetailsUsingList");
+                    b.ToTable("EducatorDetailsEF");
                 });
 
             modelBuilder.Entity("SchoolManagementAppWeb.Models.EducatorDetailsForDropdownEF", b =>
@@ -71,7 +74,7 @@ namespace SchoolManagementAppWeb.Migrations
 
                     b.HasKey("educator_registration_Id");
 
-                    b.ToTable("EducatorDetailsForDropdown");
+                    b.ToTable("EducatorDetailsForDropdownEF");
                 });
 
             modelBuilder.Entity("SchoolManagementAppWeb.Models.StudentDetailsEF", b =>
@@ -127,7 +130,7 @@ namespace SchoolManagementAppWeb.Migrations
 
                     b.HasKey("student_registration_Id");
 
-                    b.ToTable("StudentDetailsForDropdown");
+                    b.ToTable("StudentDetailsForDropdownEF");
                 });
 #pragma warning restore 612, 618
         }
