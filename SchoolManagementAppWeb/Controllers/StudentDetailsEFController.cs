@@ -7,26 +7,21 @@ using SchoolManagementAppWeb.Repository;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SchoolManagementAppWeb.Controllers
 {
     public class StudentDetailsEFController : Controller
     {
         private readonly IStudentDetailsUsingEF studentInfoRepository;
+        private readonly SchoolApplicationDbContext context;
 
-        public StudentDetailsEFController(IStudentDetailsUsingEF studentInfoRepository)
+        public StudentDetailsEFController(IStudentDetailsUsingEF studentInfoRepository, SchoolApplicationDbContext context)
         {
             this.studentInfoRepository = studentInfoRepository;
-
+            this.context = context;
         }
-
-        //public IActionResult fetchStudentDetailsUsingIEnumerable()
-        //{
-
-        //    var studentDetails = studentInfoRepository.fetchStudentDetailsUsingIEnumerable();
-
-        //    return View(studentDetails);
-        //}
 
         [Authorize(Roles = "Admin,Educator")]
         [HttpGet]
@@ -39,21 +34,39 @@ namespace SchoolManagementAppWeb.Controllers
             return View(lstStudentInfoList);
         }
 
-        [Authorize(Roles = "Admin,Educator")]
+       
         public IActionResult fetchStudentDetailsForDropDown()
         {
             List<StudentDetailsForDropdownEF> lstStudentForDrpDwn = new List<StudentDetailsForDropdownEF>();
+            lstStudentForDrpDwn =  studentInfoRepository.fetchStudentDetailsForDropdownEF();
+            ViewBag.studentListDropdown =  new SelectList(lstStudentForDrpDwn, "student_registration_Id", "student_name");
 
-            /*This code is for getting dropdown details*/
-            lstStudentForDrpDwn = studentInfoRepository.fetchStudentDetailsForDropdownEF();
-            ViewBag.studentList = new SelectList(lstStudentForDrpDwn, "student_registration_Id", "student_name");
-            /*code for grtting dropdown details ends*/
-
-            
-
-            return View(lstStudentForDrpDwn);
+            return View();
         }
 
+        
+        [HttpGet]
+        public IActionResult fetchSelectedStudentDetailsFromDropDown(int student_registration_Id)
+        {
+            var dropDownSelectedStudentDetails = context.StudentDetailsEF.Where(p => p.student_registration_Id == student_registration_Id).Select(p => new { p.student_registration_Id, p.student_name, p.student_roll_number, p.student_mobile_number, p.student_class_details, p.student_section_details, p.student_address, p.student_guardian_Name }).ToList();
+            return Json(dropDownSelectedStudentDetails);
+
+        }
+
+       
+        public async Task<IActionResult> fetchStudentsDetailsForSelectListItem()
+        {
+            ViewBag.studentSelectListItem = await context.StudentDetailsForDropdownEF.OrderBy(c => c.student_registration_Id).ToListAsync();
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> fetchSelectedStudentDetailsFromSelectListItem(int student_registration_Id)
+        {
+            var selectListSelectedStudentDetails = await context.StudentDetailsEF.Where(p => p.student_registration_Id == student_registration_Id).Select(p => new { p.student_registration_Id, p.student_name, p.student_roll_number, p.student_mobile_number, p.student_class_details, p.student_section_details, p.student_address, p.student_guardian_Name }).ToListAsync();
+
+            return Json(selectListSelectedStudentDetails);
+        }
 
         public IActionResult Index()
         {

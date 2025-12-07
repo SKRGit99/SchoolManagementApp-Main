@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SchoolManagementAppWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolManagementAppWeb.Controllers
 {
@@ -52,6 +53,8 @@ namespace SchoolManagementAppWeb.Controllers
             return View();
         }
 
+       
+        
         [HttpGet]
         public IActionResult Login(string ReturnUrl)
         {

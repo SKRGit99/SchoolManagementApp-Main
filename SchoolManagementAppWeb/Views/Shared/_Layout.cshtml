@@ -14,14 +14,17 @@
 
     <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
-
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
 
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ABC International School</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Anupam International School</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +57,7 @@
                                                     asp-area=""
                                                     asp-controller="StudentDetailsEF"
                                                     asp-action="fetchStudentDetailsUsingList">
-                                                        Student Details
+                                                        All Student Details
                                                     </a>
                                                 </li>
                                                 <li>
@@ -62,14 +65,14 @@
                                                         asp-area=""
                                                         asp-controller="StudentDetailsEF"
                                                         asp-action="fetchStudentDetailsForDropDown">
-                                                        Staff Details
+                                                        Individual Student Details
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a class="dropdown-item"
                                                        asp-area=""
-                                                       asp-controller="EducatorDetailsEF"
-                                                        asp-action="fetchEducatorDetailsForDropDown">
+                                                       asp-controller="StudentDetailsEF"
+                                                        asp-action="fetchStudentsDetailsForSelectListItem">
                                                         Vendor Details
                                                     </a>
                                                 </li>
