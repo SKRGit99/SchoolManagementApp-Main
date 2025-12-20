@@ -14,11 +14,6 @@ namespace SchoolManagementAppWeb.Repository
         }
 
 
-        //public IEnumerable<StudentDetailsEF> fetchStudentDetailsUsingIEnumerable() //Display all the Records.
-        //{
-        //    return SchoolApplicationDbContext.StudentDetailsUsingIEnumerable;
-        //}
-
         public List<StudentDetailsEF> fetchStudentDetailsUsingListEF()
         {
             List<StudentDetailsEF> stdDetailsUsingList = new List<StudentDetailsEF>();
